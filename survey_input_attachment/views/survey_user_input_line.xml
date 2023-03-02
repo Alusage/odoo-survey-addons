@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_user_input_line_form" model="ir.ui.view">
+    <field name="name">survey_input_attachment survey.user_input_line form</field>
+    <field name="model">survey.user_input_line</field>
+    <field name="inherit_id" ref="survey.survey_user_input_line_form"/>
+    <field name="priority">20</field>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='answer_type']" position="after">
+        <field name="file" filename="filename" attrs="{'invisible': [('answer_type','!=','upload_file')]}"/>
+        <field name="filename" invisible="1"/>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

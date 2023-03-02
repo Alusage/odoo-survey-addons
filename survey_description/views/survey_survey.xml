@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_survey_form" model="ir.ui.view">
+    <field name="name">survey_description survey.survey form</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_form"/>
+    <field name="priority">20</field>
+    <field name="arch" type="xml">
+      <xpath expr="//notebook/page[descendant::field[@name='page_ids']]" position="after">
+        <page name="description" string="Description">
+          <group>
+            <p colspan="2" class="text-muted oe_edit_only">
+              This content will be displayed between the title of the survey and the "Start" button, on the answer homepage.<br/>
+              You can also add a custom content on each page of the survey through the "Description" field on each page.
+            </p>
+            <field name="description" nolabel="1" colspan="2"/>
+          </group>
+        </page>
+        <page name="thank_you" string="Thank you page">
+          <group class="o_label_nowrap">
+            <field name="thank_you_message"/>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_survey_form" model="ir.ui.view">
+    <field name="name">survey_input_template_custom survey.survey form</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_form"/>
+    <field name="priority">21</field>
+    <field name="arch" type="xml">
+      <field name="thank_you_message" position="before">
+        <field name="thank_you_title" string="Page title"/>
+      </field>
+      <xpath expr="//notebook/page[descendant::field[@name='users_can_go_back']]" position="inside">
+        <group col="4" class="o_label_nowrap">
+          <field name="start_btn_label"/>
+          <field name="submit_btn_label"/>
+        </group>
+      </xpath>
+      <xpath expr="//notebook/page[last()]" position="after">
+        <page name="scss_style" string="SCSS style" groups="base.group_system">
+          <div class="text-muted mb16">
+            <i class="fa fa-exclamation-triangle text-warning"/>
+            This SCSS stylesheet will be injected in the layout of user response to a survey. Be sure of what you do when you decide to modify this field.
+          </div>
+          <field name="scss_style" widget="ace" options="{'mode': 'scss'}"/>
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

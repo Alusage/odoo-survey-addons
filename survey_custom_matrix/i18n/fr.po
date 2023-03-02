@@ -1,0 +1,183 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* survey_custom_matrix
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-02 17:50+0000\n"
+"PO-Revision-Date: 2023-03-02 17:50+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_user_input_line__answer_type
+msgid "Answer Type"
+msgstr "Type de réponse"
+
+#. module: survey_custom_matrix
+#: model:ir.actions.report,name:survey_custom_matrix.action_view_pdf_answers
+msgid "Answers"
+msgstr "Réponses"
+
+#. module: survey_custom_matrix
+#: selection:survey.user_input_line,answer_type:0
+msgid "Attachment (img/pdf)"
+msgstr "Pièce jointe (img/pdf)"
+
+#. module: survey_custom_matrix
+#: selection:survey.label,type:0
+msgid "Checkbox"
+msgstr "Case à cocher"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label_value__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label_value__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: survey_custom_matrix
+#: selection:survey.question,matrix_subtype:0
+msgid "Custom Matrix"
+msgstr "Matrice personnalisée"
+
+#. module: survey_custom_matrix
+#: selection:survey.user_input_line,answer_type:0
+msgid "Date"
+msgstr "Date"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label_value__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: survey_custom_matrix
+#: selection:survey.label,type:0
+msgid "Dropdown"
+msgstr "Liste déroulante"
+
+#. module: survey_custom_matrix
+#: selection:survey.user_input_line,answer_type:0
+msgid "Free Text"
+msgstr "Texte libre"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label_value__id
+msgid "ID"
+msgstr ""
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label_value____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label_value__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label_value__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_question__matrix_subtype
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_user_input_line__matrix_subtype
+msgid "Matrix Type"
+msgstr "Type de matrice"
+
+#. module: survey_custom_matrix
+#: selection:survey.label,type:0
+msgid "Multiple Lines Text Box"
+msgstr "Plusieurs lignes de texte"
+
+#. module: survey_custom_matrix
+#: selection:survey.question,matrix_subtype:0
+msgid "Multiple choices per row"
+msgstr "Plusieurs choix par ligne"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label_value__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: survey_custom_matrix
+#: selection:survey.user_input_line,answer_type:0
+msgid "Number"
+msgstr "Numéro"
+
+#. module: survey_custom_matrix
+#: selection:survey.label,type:0
+msgid "Numerical Value"
+msgstr "Valeur numérique"
+
+#. module: survey_custom_matrix
+#: selection:survey.question,matrix_subtype:0
+msgid "One choice per row"
+msgstr "Un choix par ligne"
+
+#. module: survey_custom_matrix
+#: model_terms:ir.ui.view,arch_db:survey_custom_matrix.survey_user_input_form
+msgid "Print PDF Answers"
+msgstr "Imprimer les réponses en PDF"
+
+#. module: survey_custom_matrix
+#: selection:survey.label,type:0
+msgid "Single Line Text Box"
+msgstr "Ligne de texte unique"
+
+#. module: survey_custom_matrix
+#: selection:survey.user_input_line,answer_type:0
+msgid "Suggestion"
+msgstr ""
+
+#. module: survey_custom_matrix
+#: model:ir.model,name:survey_custom_matrix.model_survey_label
+msgid "Survey Label"
+msgstr "Étiquette du sondage"
+
+#. module: survey_custom_matrix
+#: model:ir.model,name:survey_custom_matrix.model_survey_question
+msgid "Survey Question"
+msgstr "Question du sondage"
+
+#. module: survey_custom_matrix
+#: model:ir.model,name:survey_custom_matrix.model_survey_user_input_line
+msgid "Survey User Input Line"
+msgstr "Ligne de saisie pour l'utilisateur du sondage"
+
+#. module: survey_custom_matrix
+#: selection:survey.user_input_line,answer_type:0
+msgid "Text"
+msgstr "Texte"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label__type
+msgid "Type of question"
+msgstr "Type de question"
+
+#. module: survey_custom_matrix
+#: model:ir.model,name:survey_custom_matrix.model_survey_label_value
+msgid "Value"
+msgstr "Valeur"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_user_input_line__value_id
+msgid "Value Dropdown"
+msgstr "Valeur"
+
+#. module: survey_custom_matrix
+#: model:ir.model.fields,field_description:survey_custom_matrix.field_survey_label__value_ids
+msgid "Values"
+msgstr "Valeurs"
+

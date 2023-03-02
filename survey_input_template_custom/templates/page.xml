@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="page" inherit_id="survey.page">
+    <xpath expr="//button[@t-if='last']" position="replace">
+      <button t-if="last" type="submit" class="btn btn-primary" name="button_submit" value="finish">
+        <t t-if="survey.submit_btn_label">
+          <span t-field="survey.submit_btn_label"/>
+        </t>
+        <t t-else="">
+          Submit survey
+        </t>
+      </button>
+    </xpath>
+  </template>
+
+</odoo>

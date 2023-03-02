@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_user_input_form" model="ir.ui.view">
+    <field name="name">survey_select_input survey.user_input form</field>
+    <field name="model">survey.user_input</field>
+    <field name="inherit_id" ref="survey.survey_user_input_form"/>
+    <field name="priority">26</field>
+    <field name="groups_id" eval="[(6,0,[ref('survey.group_survey_manager')])]"/>
+    <field name="arch" type="xml">
+      <div name="button_box" position="inside">
+        <button type="object" name="toggle_selected" class="oe_stat_button" icon="fa-check"
+          attrs="{'invisible':['|','|',('test_entry','=',True),('state','!=','done')]}">
+          <field name="selected" widget="boolean_button"
+            options="{'terminology': {'string_true': 'Selected', 'string_false': 'Not selected', 'hover_false': 'Select', 'hover_true': 'Unselect'}}"/>
+        </button>
+      </div>
+    </field>
+  </record>
+
+  <record id="survey_user_input_tree" model="ir.ui.view">
+    <field name="name">survey_select_input survey.user_input tree</field>
+    <field name="model">survey.user_input</field>
+    <field name="inherit_id" ref="survey.survey_user_input_tree"/>
+    <field name="priority">26</field>
+    <field name="groups_id" eval="[(6,0,[ref('survey.group_survey_manager')])]"/>
+    <field name="arch" type="xml">
+      <field name="state" position="after">
+        <field name="selected" widget="toggle_button" attrs="{'invisible':['|',('test_entry','=',True),('state','!=','done')]}"/>
+      </field>
+    </field>
+  </record>
+
+  <record id="view_survey_user_input_kanban" model="ir.ui.view">
+    <field name="name">survey_select_input survey.user_input kanban</field>
+    <field name="model">survey.user_input</field>
+    <field name="inherit_id" ref="survey.view_survey_user_input_kanban"/>
+    <field name="priority">26</field>
+    <field name="groups_id" eval="[(6,0,[ref('survey.group_survey_manager')])]"/>
+    <field name="arch" type="xml">
+      <field name="state" position="after">
+        <field name="selected"/>
+      </field>
+      <xpath expr="//div[hasclass('o_kanban_record_top')]" position="inside">
+        <span t-if="record.selected.raw_value" class="badge-pill badge-success">Selected</span>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="survey_user_input_search" model="ir.ui.view">
+    <field name="name">survey_select_input survey.user_input search</field>
+    <field name="model">survey.user_input</field>
+    <field name="inherit_id" ref="survey.survey_user_input_search"/>
+    <field name="priority">26</field>
+    <field name="groups_id" eval="[(6,0,[ref('survey.group_survey_manager')])]"/>
+    <field name="arch" type="xml">
+      <filter name="new" position="after">
+        <separator/>
+        <filter string="Selected" name="selected" domain="[('selected','=', True)]"/>
+      </filter>
+    </field>
+  </record>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="survey_init" inherit_id="survey.survey_init">
+    <a role="button" position="replace">
+      <a role="button" class="btn btn-primary btn-lg" t-att-href="'/survey/fill/%s/%s' % (slug(survey), token)">
+        <t t-if="survey.start_btn_label">
+          <span t-field="survey.start_btn_label"/>
+        </t>
+        <t t-else="">
+          Start Survey
+        </t>
+      </a>
+    </a>
+  </template>
+
+</odoo>

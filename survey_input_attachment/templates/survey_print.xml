@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="survey_print" name="Survey Attachment print" inherit_id="survey.survey_print">
+    <xpath expr="//div[hasclass('js_question-wrapper')]/t[last()]" position='after'>
+      <t t-if="question.type == 'upload_file'"><t t-call="survey_input_attachment.upload_file"/></t>
+    </xpath>
+  </template>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_question_form" model="ir.ui.view">
+    <field name="name">survey_custom_matrix survey.question form</field>
+    <field name="model">survey.question</field>
+    <field name="inherit_id" ref="survey.survey_question_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//notebook//page//field[@name='labels_ids']//tree" position="inside">
+        <field name="type" attrs="{'column_invisible': [('parent.matrix_subtype','!=','custom')]}"/>
+        <field name="value_ids" widget="many2many_tags"
+          attrs="{'column_invisible': [('parent.matrix_subtype','!=','custom')], 'invisible': [('type', '!=', 'dropdown')]}"/>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

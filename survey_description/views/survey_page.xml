@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_page_form" model="ir.ui.view">
+    <field name="name">survey_description survey.page form</field>
+    <field name="model">survey.page</field>
+    <field name="inherit_id" ref="survey.survey_page_form"/>
+    <field name="priority">20</field>
+    <field name="arch" type="xml">
+      <h1 position="after">
+        <label for="description" class="oe_edit_only"/>
+      </h1>
+      <field name="question_ids" position="before">
+        <field name="description" nolabel="1" colspan="2"/>
+      </field>
+    </field>
+  </record>
+
+</odoo>

@@ -1,0 +1,114 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* survey_deadline_autoclose
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-28 18:13+0000\n"
+"PO-Revision-Date: 2023-02-28 18:13+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: survey_deadline_autoclose
+#: model:ir.model.fields,field_description:survey_deadline_autoclose.field_survey_survey__auto_close
+msgid "Auto close"
+msgstr "Clôture automatique"
+
+#. module: survey_deadline_autoclose
+#: model:mail.message.subtype,description:survey_deadline_autoclose.mail_message_subtype_survey_closed
+msgid "This survey is closed."
+msgstr "Ce sondage est clôturé."
+
+#. module: survey_deadline_autoclose
+#: model:ir.actions.server,name:survey_deadline_autoclose.cron_close_expired_surveys_ir_actions_server
+#: model:ir.cron,cron_name:survey_deadline_autoclose.cron_close_expired_surveys
+#: model:ir.cron,name:survey_deadline_autoclose.cron_close_expired_surveys
+msgid "Close expired surveys"
+msgstr "Clôture des sondages arrivés à échéance"
+
+#. module: survey_deadline_autoclose
+#: model_terms:ir.ui.view,arch_db:survey_deadline_autoclose.survey_survey_form
+msgid "Close survey"
+msgstr "Clôturer ce sondage"
+
+#. module: survey_deadline_autoclose
+#: model:mail.message.subtype,name:survey_deadline_autoclose.mail_message_subtype_survey_closed
+msgid "Closed survey"
+msgstr "Sondage clos"
+
+#. module: survey_deadline_autoclose
+#: model:ir.model.fields,field_description:survey_deadline_autoclose.field_survey_survey__date_deadline
+msgid "Deadline"
+msgstr "Echéance"
+
+#. module: survey_deadline_autoclose
+#: model_terms:ir.ui.view,arch_db:survey_deadline_autoclose.survey_survey_kanban
+msgid "Expiration :"
+msgstr "Échéance :"
+
+#. module: survey_deadline_autoclose
+#: model_terms:ir.ui.view,arch_db:survey_deadline_autoclose.survey_survey_search
+msgid "Expiration month"
+msgstr "Mois d'échéance"
+
+#. module: survey_deadline_autoclose
+#: model:mail.message.subtype,name:survey_deadline_autoclose.mail_message_subtype_survey_expired
+msgid "Expired survey"
+msgstr "Sondage expiré"
+
+#. module: survey_deadline_autoclose
+#: model_terms:ir.ui.view,arch_db:survey_deadline_autoclose.survey_survey_search
+msgid "Group By"
+msgstr "Regrouper par"
+
+#. module: survey_deadline_autoclose
+#: model:ir.model.fields,help:survey_deadline_autoclose.field_survey_survey__auto_close
+msgid "If checked, the survey will be automatically closed when deadline is overpassed."
+msgstr "Si coché, ce sondage sera automatiquement clôturé lorsque la date d'échéance sera dépassée."
+
+#. module: survey_deadline_autoclose
+#: code:addons/survey_deadline_autoclose/models/survey_survey.py:65
+#, python-format
+msgid "No \"closed\" stage found, the requested operation is impossible.\n"
+"To fix this situation, you have to check \"Closed\" at least on one survey stage."
+msgstr "Aucune étape \"Fermé\" trouvée, l'opération demandée est impossible.\n"
+"Pour régler ce problème, vous devez cocher \"Fermé\" sur au moins une étape."
+
+#. module: survey_deadline_autoclose
+#: model:ir.model,name:survey_deadline_autoclose.model_survey_survey
+msgid "Survey"
+msgstr "Sondage"
+
+#. module: survey_deadline_autoclose
+#: code:addons/survey_deadline_autoclose/models/survey_survey.py:56
+#, python-format
+msgid "Survey closing impossible"
+msgstr "Clôture du sondage impossible"
+
+#. module: survey_deadline_autoclose
+#: code:addons/survey_deadline_autoclose/models/survey_survey.py:57
+#, python-format
+msgid "Survey should have been automatically closed but no \"closed\" stage was found, the requested operation was impossible to proceed.\n"
+"To fix this situation, you have to check \"Closed\" at least on one survey stage."
+msgstr "Ce sondage aurait dû être clôturé automatiquement mais aucune étape \"Fermé\" n'a été trouvée, l'opération demandée est impossible.\n"
+"Pour régler ce problème, vous devez cocher \"Fermée\" sur au moins une étape."
+
+#. module: survey_deadline_autoclose
+#: code:addons/survey_deadline_autoclose/models/survey_survey.py:22
+#: model:mail.message.subtype,description:survey_deadline_autoclose.mail_message_subtype_survey_expired
+#, python-format
+msgid "This survey has expired."
+msgstr "Ce sondage est arrivé à échéance."
+
+#. module: survey_deadline_autoclose
+#: code:addons/survey_deadline_autoclose/models/survey_survey.py:75
+#, python-format
+msgid "This survey was automatically closed."
+msgstr "Ce sondage a été clôturé automatiquement."
+

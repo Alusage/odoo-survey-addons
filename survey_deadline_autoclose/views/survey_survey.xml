@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_survey_form" model="ir.ui.view">
+    <field name="name">survey_deadline_autoclose survey.survey form</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_form"/>
+    <field name="priority">28</field>
+    <field name="arch" type="xml">
+      <field name="stage_id" position="before">
+        <button name="action_close_survey" string="Close survey" type="object" attrs="{'invisible': [('is_closed', '=', True)]}"/>
+      </field>
+      <xpath expr="//field[@name='users_can_go_back']/../.." position="inside">
+        <group name="options">
+        </group>
+      </xpath>
+      <group name="options" position="inside">
+        <xpath expr="//field[@name='users_can_go_back']/.." position="move"/>
+      </group>
+      <group name="options" position="inside">
+        <group name="deadline" class="o_label_nowrap">
+          <field name="date_deadline" class="oe_inline"/>
+          <field name="auto_close" attrs="{'invisible': [('date_deadline','=',False)]}"/>
+        </group>
+      </group>
+    </field>
+  </record>
+
+  <record id="survey_survey_tree" model="ir.ui.view">
+    <field name="name">survey_deadline_autoclose survey.survey tree</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_tree"/>
+    <field name="priority">28</field>
+    <field name="arch" type="xml">
+      <tree position="attributes">
+        <attribute name="decoration-muted">is_closed</attribute>
+      </tree>
+      <tree position="inside">
+        <field name="is_closed" invisible="1"/>
+      </tree>
+      <field name="stage_id" position="after">
+        <field name="date_deadline"/>
+        <field name="auto_close"/>
+      </field>
+    </field>
+  </record>
+
+  <record id="survey_survey_kanban" model="ir.ui.view">
+    <field name="name">survey_deadline_autoclose survey.survey kanban</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_kanban"/>
+    <field name="priority">28</field>
+    <field name="arch" type="xml">
+      <field name="title" position="after">
+        <field name="date_deadline"/>
+        <field name="auto_close"/>
+      </field>
+      <li id="survey_test" position="before">
+        <li t-if="record.date_deadline.raw_value" id="deadline" class="text-muted" t-att-title="record.auto_close.raw_value and 'Auto close on expiration' or 'Manual close'">
+          <t t-if="record.auto_close.raw_value">Expiration : <strong class="text-danger"><field name="date_deadline"/></strong></t>
+          <t t-else="">Expiration : <strong><field name="date_deadline"/></strong></t>
+        </li>
+      </li>
+    </field>
+  </record>
+
+  <record id="survey_survey_search" model="ir.ui.view">
+    <field name="name">survey_deadline_autoclose survey.survey search</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_survey_view_search"/>
+    <field name="priority">28</field>
+    <field name="arch" type="xml">
+      <search position="inside">
+        <group expand="0" string="Group By">
+          <filter string="Expiration month" name="group_date_deadline_month" context="{'group_by':'date_deadline:month'}"/>
+        </group>
+      </search>
+    </field>
+  </record>
+
+</odoo>

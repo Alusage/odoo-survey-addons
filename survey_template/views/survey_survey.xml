@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- survey views and actions -->
+
+  <record id="survey_survey_form" model="ir.ui.view">
+    <field name="name">survey_template survey.survey form</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_form"/>
+    <field name="priority">22</field>
+    <field name="arch" type="xml">
+      <field name="is_closed" position="after">
+        <field name="is_template" invisible="1"/>
+      </field>
+      <!-- Hide send button and stage on templates -->
+      <header position="attributes">
+        <attribute name="attrs">{'invisible': [('is_template', '=', True)]}</attribute>
+      </header>
+      <header position="after">
+        <header attrs="{'invisible': [('is_template', '=', False)]}">
+          <button type="object" name="create_survey_from_template" string="Create a survey from this template"
+          attrs="{'invisible':[('is_template','=',False)]}" class="btn btn-warning" icon="fa-copy"/>
+        </header>
+      </header>
+      <div name="button_box" position="after">
+        <h2 class="badge-pill badge-warning float-right" attrs="{'invisible': [('is_template', '=', False)]}">This survey is a template</h2>
+      </div>
+    </field>
+  </record>
+
+  <record id="survey_survey_tree" model="ir.ui.view">
+    <field name="name">survey_template survey.survey tree</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_tree"/>
+    <field name="priority">22</field>
+    <field name="arch" type="xml">
+      <tree position="attributes">
+        <attribute name="decoration-warning">is_template</attribute>
+      </tree>
+      <tree position="inside">
+        <field name="is_template" invisible="1"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="survey_survey_kanban" model="ir.ui.view">
+    <field name="name">survey_template survey.survey kanban</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_kanban"/>
+    <field name="priority">22</field>
+    <field name="arch" type="xml">
+      <field name="title" position="after">
+        <field name="is_template"/>
+      </field>
+      <xpath expr="//div[hasclass('oe_kanban_bottom_left')]" position="inside">
+        <div t-if="record.is_template.raw_value" class="badge-pill badge-warning">Template</div>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="survey.action_survey_form" model="ir.actions.act_window">
+    <field name="domain">[('is_template','=',False)]</field>
+  </record>
+
+  <!-- survey template views and actions -->
+
+  <record id="survey_survey_template_tree" model="ir.ui.view">
+    <field name="name">survey_template survey.survey template tree</field>
+    <field name="model">survey.survey</field>
+    <field name="priority">22</field>
+    <field name="arch" type="xml">
+      <tree decoration-warning="is_template">
+        <field name="active" invisible="1"/>
+        <field name="is_template" invisible="1"/>
+        <field name="title"/>
+        <button type="object" name="create_survey_from_template" title="Create a survey from this template"
+          attrs="{'invisible':[('is_template','=',False)]}" icon="fa-copy"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="survey_survey_template_kanban" model="ir.ui.view">
+    <field name="name">survey_template survey.survey template kanban</field>
+    <field name="model">survey.survey</field>
+    <field name="priority">22</field>
+    <field name="arch" type="xml">
+      <kanban>
+        <field name="designed"/>
+        <field name="title"/>
+        <field name="is_template"/>
+        <field name="color"/>
+        <templates>
+          <div t-name="kanban-box" t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+            <div class="o_dropdown_kanban dropdown" t-if="widget.editable">
+              <a role="button" class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                <span class="fa fa-ellipsis-v"/>
+              </a>
+              <div class="dropdown-menu" role="menu">
+                <a role="menuitem" type="edit" class="dropdown-item">Modify template</a>
+                <a t-if="widget.deletable" role="menuitem" type="delete" class="dropdown-item">Delete template</a>
+                <div role="separator" class="dropdown-divider"/>
+                <div role="separator" class="dropdown-item-text">Color</div>
+                <ul class="oe_kanban_colorpicker" data-field="color"/>
+              </div>
+            </div>
+            <div class="o_kanban_record_top">
+              <h4 class="o_kanban_record_title mb4 d-block"><field name="title"/></h4>
+            </div>
+            <div class="o_kanban_record_bottom">
+              <div class="oe_kanban_bottom_left">
+                <div t-if="record.is_template.raw_value" class="badge-pill badge-warning">Template</div>
+              </div>
+              <div class="oe_kanban_bottom_right">
+                <field name="activity_ids" widget="kanban_activity"/>
+              </div>
+            </div>
+          </div>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
+  <record id="survey_survey_template_act_window" model="ir.actions.act_window">
+      <field name="name">Survey templates</field>
+      <field name="res_model">survey.survey</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">kanban,tree,form</field>
+      <field name="domain">[('is_template','=',True)]</field>
+      <field name="context">{'default_is_template':True}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Create a new survey template from here
+        </p>
+      </field>
+  </record>
+
+  <record id="survey_survey_template_act_window_view_kanban" model="ir.actions.act_window.view">
+    <field name="sequence" eval="1"/>
+    <field name="view_mode">kanban</field>
+    <field name="view_id" ref="survey_survey_template_kanban"/>
+    <field name="act_window_id" ref="survey_survey_template_act_window"/>
+  </record>
+
+  <record id="survey_survey_template_act_window_view_tree" model="ir.actions.act_window.view">
+    <field name="sequence" eval="2"/>
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="survey_survey_template_tree"/>
+    <field name="act_window_id" ref="survey_survey_template_act_window"/>
+  </record>
+
+  <record id="survey_survey_to_template_server" model="ir.actions.server">
+      <field name="name">Create template from survey</field>
+      <field name="model_id" ref="survey.model_survey_survey"/>
+      <field name="binding_model_id" ref="survey.model_survey_survey"/>
+      <field name="binding_type">action_form_only</field>
+      <field name="state">code</field>
+      <field name="code">action = record.create_template_from_survey()</field>
+  </record>
+
+  <!-- survey config menus rearrange -->
+
+  <record id="survey.menu_surveys_configuration" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6,0,[ref('survey.group_survey_manager')])]"/>
+  </record>
+
+  <menuitem
+    id="survey_survey_template_menu"
+    name="Survey templates"
+    action="survey_survey_template_act_window"
+    parent="survey.menu_surveys_configuration"
+    sequence="0"
+    groups="survey.group_survey_manager"/>
+
+  <record id="survey.menu_survey_page_form1" model="ir.ui.menu">
+    <field name="groups_id" eval="[(4, ref('base.group_no_one'))]"/>
+  </record>
+
+  <record id="survey.menu_survey_question_form1" model="ir.ui.menu">
+    <field name="groups_id" eval="[(4, ref('base.group_no_one'))]"/>
+  </record>
+
+  <record id="survey.menu_survey_label_form1" model="ir.ui.menu">
+    <field name="groups_id" eval="[(4, ref('base.group_no_one'))]"/>
+  </record>
+
+  <record id="survey.menu_survey_response_line_form" model="ir.ui.menu">
+    <field name="groups_id" eval="[(4, ref('base.group_no_one'))]"/>
+  </record>
+
+</odoo>

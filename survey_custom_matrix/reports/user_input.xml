@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="report_survey_answers_document">
+    <t t-call="web.internal_layout">
+      <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+      <div class="page">
+        <div class="oe_structure"/>
+        <div class="row mt32 mb32" style="display: inherit;">
+          <h3 class="text-center"><t t-esc="doc.survey_id.title"/></h3>
+          <t t-set="questions" t-value="doc.user_input_line_ids.mapped('question_id')"/>
+          <!-- <h3 class="text-center"><t t-esc="doc."/></h3> -->
+          <t t-foreach="questions" t-as="qs">
+            <t t-if="qs.matrix_subtype == 'custom'">
+              <h4 class="text-center mt16 mb16" t-field="qs.question"/>
+              <table class="table" style="width:100%;">
+                <thead>
+                  <tr style="width:100%;text-align: center">
+                    <th style="text-align: center">#</th>
+                    <t t-foreach="qs.labels_ids" t-as="lb">
+                      <th style="text-align: center"> <span t-field="lb.value"/></th>
+                    </t>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-foreach="qs.labels_ids_2" t-as="lb2">
+                    <tr style="text-align: center">
+                      <td style="text-align: center"><strong t-field="lb2.value"></strong></td>
+                      <t t-foreach="qs.labels_ids" t-as="lb">
+                        <t t-set="flag" t-value="false"/>
+                        <t t-foreach="doc.user_input_line_ids" t-as="ans">
+                          <t t-if="ans.value_suggested_row.id == lb2.id">
+                            <t t-if="ans.value_suggested.id == lb.id">
+                              <td class="text-center">
+                                <t t-if="ans.answer_type == 'text'">
+                                  <span t-field="ans.value_text"/>
+                                </t>
+                                <t t-if="ans.answer_type == 'number'">
+                                  <span t-field="ans.value_number"/>
+                                </t>
+                                <t t-if="ans.answer_type == 'free_text'">
+                                  <span t-field="ans.value_free_text"/>
+                                </t>
+                                <t t-if="ans.answer_type == 'suggestion'">
+                                  <span class="fa fa-check"/>
+                                </t>
+                                <t t-if="ans.answer_type == 'dropdown'">
+                                  <span t-field="ans.value_id"/>
+                                </t>
+                              </td>
+                              <t t-set="flag" t-value="true"/>
+                            </t>
+                          </t>
+                        </t>
+                        <t t-if="not flag">
+                          <td style="text-align: center">
+                          </td>
+                        </t>
+                      </t>
+                    </tr>
+                  </t>
+                </tbody>
+              </table>
+            </t>
+          </t>
+        </div>
+      </div>
+    </t>
+  </template>
+
+  <template id="report_survey_answers">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="doc">
+        <t t-call="survey_custom_matrix.report_survey_answers_document"/>
+      </t>
+    </t>
+  </template>
+
+  <report
+    id="action_view_pdf_answers"
+    string="Answers"
+    model="survey.user_input"
+    report_type="qweb-pdf"
+    file="survey_custom_matrix.report_survey_answers"
+    name="survey_custom_matrix.report_survey_answers"
+    print_report_name="'answer - %s' % (object.survey_id.title)"/>
+
+</odoo>

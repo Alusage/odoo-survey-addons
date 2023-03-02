@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="sfinished" inherit_id="survey.sfinished">
+    <h1 position="replace">
+      <t t-if="survey.thank_you_title">
+        <h1 t-esc="survey.thank_you_title"/>
+      </t>
+      <t t-else="">
+        <h1>Thank you!</h1>
+      </t>
+    </h1>
+  </template>
+
+</odoo>

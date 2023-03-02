@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="layout" inherit_id="survey.layout">
+    <xpath expr="//main/*[1]" position="before">
+      <style t-if="survey.scss_style" t-raw="survey.scss_style"/>
+    </xpath>
+  </template>
+
+</odoo>

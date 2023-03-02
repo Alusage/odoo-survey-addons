@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_user_input_line_form" model="ir.ui.view">
+    <field name="name">survey_custom_matrix survey.user_input_line form</field>
+    <field name="model">survey.user_input_line</field>
+    <field name="inherit_id" ref="survey.survey_user_input_line_form"/>
+    <field name="arch" type="xml">
+      <field name="value_text" position="after">
+        <field name="value_id" attrs="{'invisible': [('answer_type','!=','dropdown')]}"/>
+        <field name="matrix_subtype"/>
+      </field>
+      <field name="value_suggested" position="replace">
+        <field name="value_suggested" colspan='2' attrs="{'invisible': [ ('answer_type','!=','suggestion'), ('matrix_subtype', '!=', 'custom')]}"/>
+      </field>
+    </field>
+  </record>
+
+</odoo>

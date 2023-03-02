@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_survey_form" model="ir.ui.view">
+    <field name="name">survey_select_input survey.survey form</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_form"/>
+    <field name="priority">26</field>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='tot_comp_survey']/.." position="after">
+        <button type="object" name="action_survey_user_input"
+            attrs="{'invisible': [('tot_selected_survey','=',0)]}"
+            context="{'search_default_selected':1}"
+            class="oe_stat_button text-success" icon="fa-pencil-square-o">
+            <field name="tot_selected_survey" string="Selected" widget="statinfo"/>
+        </button>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

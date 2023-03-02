@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="upload_file" name="Upload a file">
+    <div class="input-file-container">
+      <t t-set="user_input_line" t-value="survey.user_input_ids.filtered(lambda sui: sui.token == token).user_input_line_ids.filtered(lambda suil: suil.question_id == question)"/>
+      <t t-if="user_input_line">
+        <t t-if="user_input_line.file_type == 'pdf'">
+          <a width="100px" height="100px" t-att-href="'data:application/pdf;base64,%s' % to_text(user_input_line.file)" target="_blank">Download <t t-esc="user_input_line.filename"/></a>
+        </t>
+        <t t-elif="user_input_line.file_type == 'image'">
+          <img width="100px" style="height: 100px;" class="img-thumbnail" t-att-src="'data:image/*;base64,%s' % to_text(user_input_line.file)"/>
+        </t>
+      </t>
+      <t t-else="">
+        <div class="file-field">
+          <input class="input-file" id="my-file" type="file" accept="image/*,application/pdf" t-att-name="prefix"/>
+        </div>
+        <!-- <br/> -->
+      </t>
+    </div>
+    <script>
+$(document).ready(function(){
+  $(".img-thumbnail").click(function(){
+    if ( $(this).height() == 240) {
+      $(this).animate({
+        opacity: '0.8',
+        height: '100px',
+        width: '100px',
+      }, "slow");
+    } else {
+      $(this).animate({
+        opacity: '0.8',
+        height: '250px',
+        width: '250px',
+      }, "slow");
+    }
+  });
+});
+    </script>
+  </template>
+
+</odoo>

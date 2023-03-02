@@ -1,0 +1,52 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* survey_select_input
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-23 10:26+0000\n"
+"PO-Revision-Date: 2020-03-23 10:26+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: survey_select_input
+#: code:addons/survey_select_input/models/survey_survey.py:26
+#, python-format
+msgid " from all ones"
+msgstr " de tous les sondés"
+
+#. module: survey_select_input
+#: code:addons/survey_select_input/models/survey_survey.py:24
+#, python-format
+msgid " selected"
+msgstr " retenues"
+
+#. module: survey_select_input
+#: model:ir.model.fields,field_description:survey_select_input.field_survey_survey__tot_selected_survey
+msgid "Number of selected surveys"
+msgstr "Nombre de réponses retenues"
+
+#. module: survey_select_input
+#: model:ir.model.fields,field_description:survey_select_input.field_survey_user_input__selected
+#: model_terms:ir.ui.view,arch_db:survey_select_input.survey_survey_form
+#: model_terms:ir.ui.view,arch_db:survey_select_input.survey_user_input_search
+#: model_terms:ir.ui.view,arch_db:survey_select_input.view_survey_user_input_kanban
+msgid "Selected"
+msgstr "Retenue"
+
+#. module: survey_select_input
+#: model:ir.model,name:survey_select_input.model_survey_survey
+msgid "Survey"
+msgstr "Sondage"
+
+#. module: survey_select_input
+#: model:ir.model,name:survey_select_input.model_survey_user_input
+msgid "Survey User Input"
+msgstr "Saisie utilisateur du sondage"
+

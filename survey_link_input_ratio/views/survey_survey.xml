@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="survey_survey_form" model="ir.ui.view">
+    <field name="name">survey_link_input_ratio survey.survey form</field>
+    <field name="model">survey.survey</field>
+    <field name="inherit_id" ref="survey.survey_form"/>
+    <field name="priority">24</field>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='tot_comp_survey']/.." position="before">
+        <button type="object" name="action_survey_user_input"
+          context="{'search_default_partially_completed':1, 'search_default_completed':0, 'link_only':1}"
+          attrs="{'invisible':[('tot_sent_survey','=',0)]}" class="oe_stat_button">
+          <field string="Started" name="sent_start_ratio" widget="percentpie"/>
+        </button>
+        <button type="object" name="action_survey_user_input"
+          context="{'search_default_completed':1, 'link_only':1}"
+          attrs="{'invisible':[('tot_sent_survey','=',0)]}" class="oe_stat_button">
+          <field string="Completed" name="sent_comp_ratio" widget="percentpie"/>
+        </button>
+      </xpath>
+      <xpath expr="//div[hasclass('oe_title')]" position="after">
+        <field name="tot_sent_survey" invisible="1"/>
+        <field name="tot_sent_start_survey" invisible="1"/>
+        <field name="tot_sent_comp_survey" invisible="1"/>
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

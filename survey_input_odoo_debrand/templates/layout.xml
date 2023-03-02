@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="layout" name="Remove Odoo branding" priority="1" inherit_id="survey.layout">
+    <xpath expr="//div[hasclass('container','mt16','mb8')]/div[hasclass('float-right')]" position="replace">
+      <div class="float-right" t-ignore="true" t-if="not editable"/>
+    </xpath>
+  </template>
+
+</odoo>

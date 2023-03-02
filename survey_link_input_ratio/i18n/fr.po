@@ -1,0 +1,58 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* survey_link_input_ratio
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-02 15:56+0000\n"
+"PO-Revision-Date: 2023-03-02 15:56+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: survey_link_input_ratio
+#: code:addons/survey_link_input_ratio/models/survey_survey.py:91
+#, python-format
+msgid " (from private links)"
+msgstr " (invitations privées)"
+
+#. module: survey_link_input_ratio
+#: model_terms:ir.ui.view,arch_db:survey_link_input_ratio.survey_survey_form
+msgid "Completed"
+msgstr "Répondu"
+
+#. module: survey_link_input_ratio
+#: model:ir.model.fields,field_description:survey_link_input_ratio.field_survey_survey__tot_sent_comp_survey
+msgid "Completed sent survey count"
+msgstr "Réponses privées terminées"
+
+#. module: survey_link_input_ratio
+#: model:ir.model.fields,field_description:survey_link_input_ratio.field_survey_survey__sent_comp_ratio
+msgid "Completed sent survey ratio"
+msgstr "Ratio de réponses privées terminées"
+
+#. module: survey_link_input_ratio
+#: model_terms:ir.ui.view,arch_db:survey_link_input_ratio.survey_survey_form
+msgid "Started"
+msgstr "En cours"
+
+#. module: survey_link_input_ratio
+#: model:ir.model.fields,field_description:survey_link_input_ratio.field_survey_survey__tot_sent_start_survey
+msgid "Started sent survey count"
+msgstr "Réponses privées en cours"
+
+#. module: survey_link_input_ratio
+#: model:ir.model.fields,field_description:survey_link_input_ratio.field_survey_survey__sent_start_ratio
+msgid "Started sent survey ratio"
+msgstr "Ratio de réponses privées en cours"
+
+#. module: survey_link_input_ratio
+#: model:ir.model,name:survey_link_input_ratio.model_survey_survey
+msgid "Survey"
+msgstr "Sondage"
+
